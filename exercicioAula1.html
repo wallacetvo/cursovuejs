@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Curso Vue.js - Exercício 1</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1 v-text="msg" style="color:blue;"></h1>
+        <form action="#" method="post">
+            <p>Nome:</p>
+            <input type="text" name="nome" value="" v-model="nome"/>
+
+            <p>Em qual unidade vocês está alocado?</p>
+            <select name="selectUnidade" id="selectUnidade" v-model="unidadeSelecionada">
+                <option value="">Selecione uma opção</option>
+                <option v-bind:value="unidade.codigo"
+                        v-for="unidade in unidades" :key="unidade.codigo"
+                        v-text="unidade.nome"></option>
+            </select>
+
+            <p>Atividades da Empresa:</p>
+            <textarea name="atividade" id="atividade" cols="60" rows="5" v-model="atividade"></textarea>
+
+            <p><input type="button" v-on:click="mostraResultado" value="Mostrar Dados"/></p>
+        </form>
+
+        <div v-if="mostrarDados">
+            <h2 style="color:red;">Resultado:</h2>
+            <p><b>Nome: </b> {{nome}} </p>
+            <p><b>Unidade: </b> {{unidadeSelecionada}} </p>
+            <p><b>Atividades: </b> {{atividade}} </p>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el: '#app',
+            data: {
+                msg: 'Curso de Vue.js - Exercício 1',
+                nome: '',
+                unidades: [
+                    {'nome': 'Sede',    'codigo': '1'},
+                    {'nome': 'Tupis',   'codigo': '2'},
+                    {'nome': 'BHTrans', 'codigo': '3'},
+                    {'nome': 'BeloTur', 'codigo': '4'}
+                ],
+                unidadeSelecionada: '',
+                atividade: '',
+                mostrarDados: false
+            },
+            methods:{
+                mostraResultado(){
+                    if ((this.nome === '') ||
+                        (this.unidadeSelecionada === '') ||
+                        (this.atividade === '')) {
+                        alert('Favor preencher todos os campos!');
+                    }
+                    else {
+                        this.mostrarDados = true;
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

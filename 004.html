@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Curso Vue.js</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app" :title="titulo">
+        <h1 v-text="msg"></h1>
+        <form action="#" method="post">
+            <!-- guardando o valor da seleção -->
+            <input type="text" name="nome" value="" v-model="nome"/>
+            <select name="selectCidade" id="selectCidade" v-model="cidadeSelecionada">
+                <option value="">Selecione uma opção</option>
+                <option v-bind:value="cidade.codigo"
+                        v-for="cidade in cidades" :key="cidade.codigo"
+                        v-text="cidade.nome"></option>
+            </select>
+            <!-- Chamando um método -->
+            <input type="button" v-on:click="mostraCodigoSelect" value="Mostrar"/>
+        </form>
+    </div>
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el: '#app',
+            data: {
+                msg: 'Curso de Vue.js',
+                titulo: new Date().toLocaleString(),
+                cidades: [
+                    {'nome': 'Belo Horizonte', 'codigo': '31'},
+                    {'nome': 'São Paulo',      'codigo': '11'},
+                    {'nome': 'Rio de Janeiro', 'codigo': '21'},
+                    {'nome': 'Vitória',        'codigo': '27'}
+                ],
+                cidadeSelecionada: '',
+                nome: ''
+            },
+            methods:{
+                mostraCodigoSelect(){
+                    console.log(this.cidadeSelecionada); // Mostra o valor na área Console para debug
+                    alert(this.cidadeSelecionada);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

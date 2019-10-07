@@ -8,16 +8,21 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
-    <div id="app" v-bind:title="titulo">
+    <div id="app" :title="titulo">
         <h1> {{ msg }} </h1>
+        <h3 v-if     ="condicao === 1">Subtitulo 1</h3>
+        <h3 v-else-if="condicao === 2">Subtitulo 2</h3>
+        <h3 v-else-if="condicao === 3">Subtitulo 3</h3>
+        <h3 v-else>Subtitulo 4</h3>
     </div>
 
     <script type="text/javascript">
         var app = new Vue({
             el: '#app',
             data: {
-                msg:    'Curso de Vue.js',
-                titulo: new Date().toLocaleString()
+                msg: 'Curso de Vue.js',
+                titulo: new Date().toLocaleString(),
+                condicao: (Math.floor(Math.random()*4)+1)
             }
         });
     </script>
