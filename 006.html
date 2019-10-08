@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Curso Vue.js - Exercício 1</title>
+    <title>Curso Vue.js</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
+
 <body>
     <div id="app">
-        <h1 v-text="msg" style="color:blue;"></h1>
+        <titulo v-bind:titulo="msg" cor="blue"></titulo>
 
         <form action="#" method="post">
             <p>Nome:</p>
@@ -30,14 +31,20 @@
         </form>
 
         <div v-if="mostrarDados" style="border: 1px solid black;">
-            <h2 style="color:red;">Resultado:</h2>
-            <p><b>Nome: </b> {{nome}} </p>
-            <p><b>Unidade: </b> {{unidadeSelecionada}} </p>
+            <titulo titulo="Resultado:" cor="red"></titulo>
+            <p><b>Nome: </b>       {{nome}} </p>
+            <p><b>Unidade: </b>    {{unidadeSelecionada}} </p>
             <p><b>Atividades: </b> {{atividade}} </p>
         </div>
     </div>
 
     <script type="text/javascript">
+        // Criando componentes com valor:
+        Vue.component('titulo', {
+            props: ['titulo','cor'],
+            template: '<h1 v-bind:style="{color: cor}"> {{titulo}} </h1>'
+        });
+
         var app = new Vue({
             el: '#app',
             data: {
@@ -64,7 +71,8 @@
                     else {
                         this.mostrarDados = true;
                     }
-                }
+                },
+                mostraOutroResultado(){}
             }
         });
     </script>

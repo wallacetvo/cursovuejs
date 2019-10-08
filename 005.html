@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Curso Vue.js - Exercício 1</title>
+    <title>Curso Vue.js</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
     <div id="app">
-        <h1 v-text="msg" style="color:blue;"></h1>
+        <titulo></titulo>
 
         <form action="#" method="post">
             <p>Nome:</p>
@@ -30,18 +30,26 @@
         </form>
 
         <div v-if="mostrarDados" style="border: 1px solid black;">
-            <h2 style="color:red;">Resultado:</h2>
-            <p><b>Nome: </b> {{nome}} </p>
-            <p><b>Unidade: </b> {{unidadeSelecionada}} </p>
+            <titulo2></titulo2>
+            <p><b>Nome: </b>       {{nome}} </p>
+            <p><b>Unidade: </b>    {{unidadeSelecionada}} </p>
             <p><b>Atividades: </b> {{atividade}} </p>
         </div>
     </div>
 
     <script type="text/javascript">
+        // Criando componentes:
+        Vue.component('titulo', {
+            template: '<h1 style="color: blue;">Curso de Vue.js - Exercicio 1</h1>'
+        });
+
+        Vue.component('titulo2', {
+            template: '<h2 style="color: blue;">Resultado</h2>'
+        });
+
         var app = new Vue({
             el: '#app',
             data: {
-                msg: 'Curso de Vue.js - Exercício 1',
                 nome: '',
                 unidades: [
                     {'nome': 'Sede',    'codigo': '1'},
