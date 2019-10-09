@@ -19,16 +19,21 @@
         </tbody>
     </table>
 
+    <form action="#" method="post">
+        <p>Nome:</p>
+        <input type="text" name="nome" value="" v-model="nome"/>
+
+        <p>Em qual unidade você está alocado?</p>
+        <select name="selectUnidade" id="selectUnidade" v-model="unidadeSelecionada">
+            <option value="">Selecione uma opção</option>
+            <option v-bind:value="unidade.codigo"
+                    v-for="unidade in unidades" :key="unidade.codigo"
+                    v-text="unidade.nome"></option>
+        </select>
+    </form>
+
     <br>
-    <input type="button" v-on:click="mostraDados" value="Mostrar">
-    <br>
-    <strong>Total dos salários (Method):</strong> {{calculaSalarioMethod()}}
-    <br>
-    <strong>Total dos salários (Computed):</strong> {{calculaSalarioComputed}}
-    <br>
-    <strong>Total contador (Method):</strong> {{contadorMethod}}
-    <br>
-    <strong>Total contador (Computed):</strong> {{contadorComputed}}
+    <strong>Nome alterado {{contadorNome}} vezes.</strong>
 </div>
 </template>
 
@@ -43,7 +48,16 @@ export default {
     data() {
         return  {
             contadorMethod: 0,
-            contadorComputed: 0
+            contadorComputed: 0,
+            unidadeSelecionada: '',
+            nome: '',
+            unidades: [
+                {'nome': 'Sede',    'codigo': '1'},
+                {'nome': 'Tupis',   'codigo': '2'},
+                {'nome': 'BHTrans', 'codigo': '3'},
+                {'nome': 'BeloTur', 'codigo': '4'}
+            ],
+            contadorNome: 0
         }
     },
     methods: { // Processado toda vez que renderizou a página
@@ -55,7 +69,7 @@ export default {
             alert(total);
         },
         calculaSalarioMethod(){
-            this.contadorMethod ++;
+            // this.contadorMethod ++;
             var total = 0;
             for (var valor of this.registros){
                 total += valor.salario;
@@ -65,12 +79,22 @@ export default {
     },
     computed: { // Processamento único, apenas quando é chamado
         calculaSalarioComputed(){
-            this.contadorComputed ++;
+            // this.contadorComputed ++;
             var total = 0;
             for (var valor of this.registros){
                 total += valor.salario;
             }
             return total;
+        }
+    },
+    watch: {
+        unidadeSelecionada: function(x){
+            if (x===''){
+                alert('Favor selecionar uma opção.');
+            }
+        },
+        nome: function(){
+            this.contadorNome ++;
         }
     }
 }
