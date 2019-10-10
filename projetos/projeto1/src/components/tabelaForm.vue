@@ -6,6 +6,8 @@
             :cor_s     = "cor_s">
     </titulo>
 
+    <router-link :to="{name: 'titulo'}">Clique para ir para o título</router-link>
+
     <table id="tabela">
         <thead>
             <tr>
@@ -94,6 +96,9 @@ export default {
             }
         },
         nome: function(){
+            if (this.contadorNome === 10) {
+                this.$router.push('/titulo'); // Redireciona para a página "titulo"
+            }
             this.contadorNome ++;
         }
     }
