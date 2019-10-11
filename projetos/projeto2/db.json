@@ -1,0 +1,39 @@
+{
+    "registros": [
+        {
+            "codigo": 1,
+            "nome": "Paulo",
+            "cargo": "Analista",
+            "unidade": "Tupis",
+            "salario": 3000.00
+        },
+        {
+            "codigo": 2,
+            "nome": "Natália",
+            "cargo": "Redatora",
+            "unidade": "Fazenda",
+            "salario": 2000.00
+        },
+        {
+            "codigo": 3,
+            "nome": "Maria Clara",
+            "cargo": "Médica",
+            "unidade": "Sede",
+            "salario": 10000.00
+        },
+        {
+            "codigo": 4,
+            "nome": "Joseph",
+            "cargo": "Professor",
+            "unidade": "BHTrans",
+            "salario": 2000.00
+        },
+        {
+            "codigo": 5,
+            "nome": "Gildeon",
+            "cargo": "Historiador",
+            "unidade": "Saúde",
+            "salario": 3000.00
+        }
+    ]
+}

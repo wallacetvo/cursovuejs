@@ -1,7 +1,7 @@
 <template>
 <div>
-    <titulo>{{titulo}}</titulo>
-    <menu></menu>
+    <!-- <titulo>{{titulo}}</titulo> -->
+    <!-- <menu></menu> -->
     <h3>Bem Vindo ao Exercício 3!</h3>
 </div>
 </template>

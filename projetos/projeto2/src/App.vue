@@ -1,6 +1,8 @@
 <template>
   <div>
     <titulo v-bind:titulo = "titulo"></titulo>
+    <menupag></menupag>
+    <homepag></homepag>
   </div>
 </template>
 
